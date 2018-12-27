@@ -1,6 +1,5 @@
-const path = require('path');
-
 module.exports = {
+    mode: 'development',
     entry: './src/index.tsx',
     module: {
         rules: [
@@ -10,9 +9,11 @@ module.exports = {
                 exclude: [
                     /node_modules/
                 ],
-            }
+            },
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ]
     },
+    devtool: 'inline-source-map',
     resolve: {
         extensions: [ '.tsx', '.ts', '.js' ]
     },
