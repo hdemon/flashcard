@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'production',
     entry: './src/index.tsx',
     module: {
         rules: [
@@ -18,7 +17,6 @@ module.exports = {
         extensions: [ '.tsx', '.ts', '.js' ]
     },
     output: {
-        filename: 'dist/bundle.js',
-        path: path.resolve(__dirname, 'dist/public')
+        filename: 'bundle.js',
     }
 };
