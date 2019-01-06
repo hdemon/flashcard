@@ -14,6 +14,7 @@ const StyledDiv = styled.div`
 interface CardProps {
   questionBody: string
   answerBody: string
+  onClick: () => void
 }
 
 const Card = (props: CardProps) => {
