@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     mode: 'development',
     entry: './src/index.tsx',
@@ -14,10 +16,18 @@ module.exports = {
         ]
     },
     devtool: 'inline-source-map',
+    devServer: {
+        contentBase: path.resolve(__dirname, 'build'),
+        hot: true,
+        inline: true,
+        openPage: "index.html"
+    },
     resolve: {
         extensions: [ '.tsx', '.ts', '.js' ]
     },
     output: {
-        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'build'),
+        publicPath: "/assets/",
+        filename: 'bundle.js'
     }
 };
