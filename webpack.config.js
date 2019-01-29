@@ -1,4 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -6,28 +10,34 @@ module.exports = {
     module: {
         rules: [
             {
-                loader: 'ts-loader',
+                loader: 'babel-loader',
                 test: /\.tsx?$/,
                 exclude: [
                     /node_modules/
                 ],
             },
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ]
     },
+    plugins: [
+        // Clean `dist` before each build.
+        new CleanWebpackPlugin(['dist']),
+        new HtmlWebpackPlugin({
+            template: "./index.html",
+            title: 'Output Management'
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new ForkTsCheckerWebpackPlugin()
+    ],
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.resolve(__dirname, 'build'),
-        hot: true,
-        inline: true,
-        openPage: "index.html"
+        contentBase: './dist',
+        hot: true
     },
     resolve: {
         extensions: [ '.tsx', '.ts', '.js' ]
     },
     output: {
-        path: path.resolve(__dirname, 'build'),
-        publicPath: "/assets/",
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
     }
 };

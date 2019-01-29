@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import Card from './Card'
+import Card from '../components/Card'
 import styled from 'styled-components'
 import { moveToNextCard } from '../actions/card'
 

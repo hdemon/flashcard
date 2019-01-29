@@ -1,17 +1,29 @@
 import * as React from 'react'
+import { hot } from 'react-hot-loader'
 import { Provider } from 'react-redux'
-import { configureStore } from '../configureStore'
-import { initialState } from '../initialState'
-import CardScreen from '../components/CardScreen'
+import { Route, Switch } from 'react-router' // react-router v4
+import { ConnectedRouter } from 'connected-react-router'
+import configureStore, { history } from '../configureStore'
+import CardScreen from './CardScreen'
 
-const store = configureStore(initialState)
+const store = configureStore()
 
-export default class Root extends React.Component {
+class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <CardScreen />
+        <ConnectedRouter history={history}>
+          <div>
+            <Switch>
+              <Route exact path="/" render={() => <CardScreen />} />
+            </Switch>
+          </div>
+        </ConnectedRouter>
       </Provider>
     )
   }
 }
+
+const root = hot(module)(Root)
+
+export { root as Root }
