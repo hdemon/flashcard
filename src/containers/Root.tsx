@@ -5,8 +5,9 @@ import { Route, Switch } from 'react-router' // react-router v4
 import { ConnectedRouter } from 'connected-react-router'
 import configureStore, { history } from '../configureStore'
 import CardScreen from './CardScreen'
+import { initialState } from '../initialState'
 
-const store = configureStore()
+const store = configureStore(initialState)
 
 class Root extends React.Component {
   render() {

@@ -4,11 +4,12 @@ export type State = {
   currentCardIndex: number
 }
 
-export const reducer = (state = {}, action: any) => {
+export const reducer = (state: any = {}, action: any) => {
   switch (action.type) {
     case MOVE_TO_NEXT_CARD:
-      return state
-    // return action.subreddit
+      return Object.assign({}, state, {
+        currentCardIndex: state.currentCardIndex + 1,
+      })
     default:
       return state
   }

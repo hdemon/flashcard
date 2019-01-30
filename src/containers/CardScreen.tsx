@@ -8,25 +8,34 @@ const StyledDiv = styled.div``
 
 export interface CardScreenProps {
   onTapCard: any
+  cards: any
+  currentCardIndex: any
 }
 
-const CardScreen: React.SFC<CardScreenProps> = ({ onTapCard }) => {
+const CardScreen: React.SFC<CardScreenProps> = ({
+  onTapCard,
+  cards,
+  currentCardIndex,
+}) => {
   return (
     <StyledDiv>
-      <Card questionBody={'hoge'} answerBody={'hoge'} onClick={onTapCard} />
+      <Card
+        questionBody={cards[currentCardIndex].question}
+        answerBody={cards[currentCardIndex].answer}
+        onClick={onTapCard}
+      />
     </StyledDiv>
   )
 }
 
-const mapStateToProps = () => {
-  return {
-    currentCardIndex: 1,
-  }
+const mapStateToProps = (state: any) => {
+  const { cards, currentCardIndex } = state.cardScreen
+  return { cards, currentCardIndex }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onTapCard: dispatch(moveToNextCard),
+    onTapCard: () => dispatch(moveToNextCard),
   }
 }
 

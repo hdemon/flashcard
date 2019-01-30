@@ -21,7 +21,7 @@ const Card = (props: CardProps) => {
   const { questionBody } = props
 
   return (
-    <StyledDiv>
+    <StyledDiv onClick={props.onClick}>
       <p>{questionBody}</p>
     </StyledDiv>
   )
