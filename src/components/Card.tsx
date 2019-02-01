@@ -12,13 +12,12 @@ const StyledDiv = styled.div`
 `
 
 interface CardProps {
-  questionBody: string
-  answerBody: string
+  card: any
   onClick: () => void
 }
 
 const Card = (props: CardProps) => {
-  const { questionBody } = props
+  const { questionBody } = props.card
 
   return (
     <StyledDiv onClick={props.onClick}>
