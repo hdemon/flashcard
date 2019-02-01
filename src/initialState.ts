@@ -1,3 +1,6 @@
 export const initialState = {
-  currentCardIndex: 0,
+  cardScreen: {
+    currentCardIndex: 0,
+    cards: [{ questionBody: 'foo' }, { questionBody: 'bar' }],
+  },
 }
