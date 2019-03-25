@@ -23,7 +23,7 @@ module.exports = {
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             template: "./index.html",
-            title: 'Output Management'
+            title: 'flashcard'
         }),
         new webpack.HotModuleReplacementPlugin(),
         new ForkTsCheckerWebpackPlugin()
@@ -34,7 +34,7 @@ module.exports = {
         hot: true
     },
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ]
+        extensions: ['.tsx', '.ts', '.js']
     },
     output: {
         filename: 'bundle.js',
